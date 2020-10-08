@@ -8,13 +8,12 @@ spring:
     config:
       server:
         git:
-          #uri: git@github.com:zzyybs/springcloud-config.git      #GitHub上面的git仓库名字
-          uri: git@github.com:dragonroman/configuration-center.git       #GitHub上面的git仓库名字
+          uri: git@github.com:DragonRoman/configuration-center.git       #GitHub上面的git仓库名字
           ####搜索目录
           search-paths:
             - configuration-center
       ####读取分支
-      label: master
+      label: main
 
 #rabbitmq相关配置
 #rabbitmq:
