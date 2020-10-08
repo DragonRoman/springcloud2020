@@ -15,7 +15,7 @@ spring:
       ####读取分支
       label: main
 
-#rabbitmq相关配置
+#rabbitmq相关配置 15672是Web管理界面的端口；5672是MQ访问的端口
   rabbitmq:
     host: localhost
     port: 5672
