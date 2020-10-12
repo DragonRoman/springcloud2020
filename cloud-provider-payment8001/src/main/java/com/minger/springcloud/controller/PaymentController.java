@@ -74,9 +74,14 @@ public class PaymentController {
     }
 
     @GetMapping(value = "/payment/feign/timeout")
-    public String paymentFeignTimeout(){
+    public String paymentFeignTimeout() {
         try { TimeUnit.SECONDS.sleep(3); }catch (Exception e) {e.printStackTrace();}
         return serverPort;
+    }
+
+    @GetMapping(value = "/payment/zipkin")              //添加zipkin监控程序
+    private String paymentZipkin() {
+        return "Welcome to zipkin monitor!";
     }
 
 }

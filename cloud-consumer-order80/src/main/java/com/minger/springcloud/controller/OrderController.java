@@ -2,8 +2,6 @@ package com.minger.springcloud.controller;
 
 import com.minger.springcloud.entities.CommonResult;
 import com.minger.springcloud.entities.Payment;
-import com.minger.springcloud.loadbalance.LoadBalancer;
-import com.netflix.discovery.DiscoveryClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,11 +24,11 @@ public class OrderController {
     @Resource
     private RestTemplate restTemplate;
 
-    @Resource
-    private LoadBalancer loadBalancer;
-
-    @Resource
-    private DiscoveryClient discoveryClient;
+//    @Resource
+//    private LoadBalancer loadBalancer;
+//
+//    @Resource
+//    private DiscoveryClient discoveryClient;
 
     @GetMapping("/consumer/payment/create")
     public CommonResult<Payment> create(Payment payment) {
@@ -57,23 +55,10 @@ public class OrderController {
         }
     }
 
-//   @GetMapping(value = "/consumer/payment/lb")
-//    public String getPaymentLB()
-//    {
-//        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
-//
-//        if(instances == null || instances.size() <= 0)
-//        {
-//            return null;
-//        }
-//
-//        ServiceInstance serviceInstance = loadBalancer.instances(instances);
-//        URI uri = serviceInstance.getUri();
-//
-//        return restTemplate.getForObject(uri+"/payment/lb",String.class);
-//
-//    }
-
-
+    @GetMapping(value = "/consumer/payment/zipkin")               //添加zipkin监控程序
+    private String paymentZipkin() {
+        String result = restTemplate.getForObject("http://localhost:8001" + "/payment/zipkin" , String.class);
+        return result;
+    }
 
 }
