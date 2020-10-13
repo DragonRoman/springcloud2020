@@ -32,6 +32,9 @@
     <module>cloud-stream-rabbitmq-provider8801</module>
     <module>cloud-stream-rabbitmq-consumer8802</module>
     <module>cloud-stream-rabbitmq-consumer8803</module>
+    <module>cloudalibaba-provider-payment9001</module>
+    <module>cloudalibaba-provider-payment9002</module>
+    <module>cloudalibaba-consumer-order93</module>
   </modules>
 
   <!-- 统一管理jar包版本 -->
@@ -46,6 +49,7 @@
     <mysql.version>5.1.47</mysql.version>
     <druid.version>1.1.16</druid.version>
     <mybatis.spring.boot.version>1.3.0</mybatis.spring.boot.version>
+    <spring.cloud.alibaba.version>2.1.1.RELEASE</spring.cloud.alibaba.version>
   </properties>
 
   <!-- 子模块继承之后，提供作用：锁定版本 + 子 modlue 不用写groupId和version  -->
@@ -69,11 +73,11 @@
         <scope>import</scope>
       </dependency>
 
-      <!--spring cloud alibaba 2.1.0.RELEASE-->
+      <!--spring cloud alibaba 2.1.1.RELEASE-->
       <dependency>
         <groupId>com.alibaba.cloud</groupId>
         <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-        <version>2.1.0.RELEASE</version>
+        <version>${spring.cloud.alibaba.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
